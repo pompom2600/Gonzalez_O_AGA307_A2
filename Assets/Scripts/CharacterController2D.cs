@@ -7,23 +7,24 @@ public class CharacterController2D : MonoBehaviour
 {
     //Player Jump, Left, Right
     public float jumpForce = 3f; //Jumpforce
-    public float speed = 5f;
-    public float gravity = 3f;
+    public float maxSpeed = 5f;
     public GameObject player;
     private Rigidbody2D rB2D;
 
     //Player Crouch
-    [Range(0, 1)] public float crouchSpeed = .40f; // Crouch speed
-    private Collider2D crouchDisableCollider; //Collider to disable when crouching
+    [Range(0, 1)] public float crouchSpeed = .40f; // Crouch maxSpeed
+    private CapsuleCollider2D capsule; //CapsuleCollider
     public Transform ceilingCheck; //position marking to cehck for ceilings
-    private float ceilingRadius = .2f; //Radius of the overlap circle to determine if player can stand up
-
+    public float ceilingRadius = .2f; //Radius of the overlap circle to determine if player can stand up
+    private Vector2 originalColliderSize;
+    private Vector2 crouchColliderSize;
+    private Vector2 crouchColliderOffset;
 
     public Transform groundCheck; //position marking to check if grounded
 
     bool grounded;
     public LayerMask groundMask; //Mask for grounchecking
-    private float groundedRadius = .49f; // Radius of the overlap circle to determine if grounded
+    public float groundedRadius = .49f; // Radius of the overlap circle to determine if grounded
 
     private bool wasCrouching = false;
     private bool facingRight = true;
@@ -40,6 +41,11 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
+        capsule = GetComponent<CapsuleCollider2D>();
+        originalColliderSize = capsule.size;
+        crouchColliderSize = new Vector2(originalColliderSize.x, originalColliderSize.y / 2f);
+        crouchColliderOffset = new Vector2(0, - originalColliderSize.y / 4f);
+
         rB2D = GetComponent<Rigidbody2D>(); //the players rigidbody
 
         if (OnLandEvent == null)
@@ -50,7 +56,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    void Fixedupdate()
+    void FixedUpdate()
     {
         bool wasGrounded = grounded;
         grounded = false;
@@ -58,7 +64,7 @@ public class CharacterController2D : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[1].gameObject != gameObject)
+            if (colliders[i].gameObject != gameObject)
             {
                 grounded = true;
                 if (!wasGrounded)
@@ -69,7 +75,7 @@ public class CharacterController2D : MonoBehaviour
 
     public void Move(float move, bool crouch, bool jump)
     {
-        if (!crouch) //If crouching, check to see if the character can stand up
+        if (!crouch && wasCrouching) //If crouching & was crouching, check to see if the character can stand up
         {
             //stand
 
@@ -89,16 +95,17 @@ public class CharacterController2D : MonoBehaviour
                     OnCrouchEvent.Invoke(true);
                 }
 
-                move *= crouchSpeed; //Reduce the speed by the crouchSpeed multiplier
+                move *= crouchSpeed; //Reduce the maxSpeed by the crouchSpeed multiplier
 
-                if (crouchDisableCollider != null) //Disable one of the colliders when crouching
-                    crouchDisableCollider.enabled = false;
+                capsule.size = crouchColliderSize; // Halve the collider height
+                capsule.offset = crouchColliderOffset; // Move the offset down by half the new hight
+
             }
 
             else
             {
-                if (crouchDisableCollider != null) //Enable collider when not crouching
-                    crouchDisableCollider.enabled = true;
+                capsule.offset = Vector2.zero;  // Move offset up by half height
+                capsule.size = originalColliderSize; // Double collider hight
 
                 if (wasCrouching)
                 {
@@ -108,7 +115,7 @@ public class CharacterController2D : MonoBehaviour
 
             }
 
-            Vector3 targetVelocity = new Vector2(move * 10f, rB2D.velocity.y); //Move character by finding the target velocity        
+          
 
             if (move > 0 && !facingRight) //if the input is moving the player right and the player is facing left
                 Flip(); //flip the player
@@ -118,10 +125,21 @@ public class CharacterController2D : MonoBehaviour
 
         }
 
+        Vector2 targetVelocity = new Vector2(move * 10f, rB2D.velocity.y); //Move character by finding the target velocity        
+
+        Vector2 forceVector = targetVelocity - rB2D.velocity; // Difference between input and current velocity
+        if (forceVector.magnitude > maxSpeed) // Clamping the force to max speed
+        {
+            forceVector.Normalize();
+            forceVector *= maxSpeed;
+        }
+
+        rB2D.AddForce(forceVector, ForceMode2D.Impulse);
+
         if (grounded && jump)
         {
             grounded = false;
-            rB2D.AddForce(new Vector2(0f, jumpForce));
+            rB2D.velocity = new Vector2(rB2D.velocity.x, jumpForce);
         }
     }
      private void Flip()
@@ -131,6 +149,13 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(groundCheck.position, groundedRadius);
+        Gizmos.DrawWireSphere(ceilingCheck.position, ceilingRadius);
     }
 
 }
