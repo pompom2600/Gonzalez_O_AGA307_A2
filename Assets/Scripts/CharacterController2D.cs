@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
 
     bool grounded;
     public LayerMask groundMask; //Mask for grounchecking
-    private float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+    private float groundedRadius = .49f; // Radius of the overlap circle to determine if grounded
 
     private bool wasCrouching = false;
     private bool facingRight = true;

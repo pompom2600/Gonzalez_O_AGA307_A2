@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController2D controller;
+    private CharacterController2D controller;
 
     float horizontalMove = 0f;
 
     public float runSpeed = 40f;
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController2D>();    
+    }
 
     private void Update()
     {
