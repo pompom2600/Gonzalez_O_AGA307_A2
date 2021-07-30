@@ -29,6 +29,8 @@ public class CharacterController2D : MonoBehaviour
     private bool wasCrouching = false;
     private bool facingRight = true;
 
+    private List<Vector2> collisionNormals = new List<Vector2>();
+
     [Header("Events")]
     [Space]
 
@@ -55,9 +57,17 @@ public class CharacterController2D : MonoBehaviour
             OnCrouchEvent = new BoolEvent();
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach(ContactPoint2D c in collision.contacts)
+        {
+            collisionNormals.Add(c.normal);
+        }
+    }
 
     void FixedUpdate()
     {
+        collisionNormals.Clear();
         bool wasGrounded = grounded;
         grounded = false;
 
@@ -85,7 +95,18 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-        if (grounded)
+        if (!grounded)
+        {
+            foreach(Vector2 normal in collisionNormals) //Stop sticking to walls
+            {
+                if ((normal.x < 0 && move > 0) || (normal.x > 0 && move < 0))
+                {
+                    move = 0;
+                }
+            }
+        }
+
+        else
         {
             if (crouch)
             {
@@ -99,7 +120,6 @@ public class CharacterController2D : MonoBehaviour
 
                 capsule.size = crouchColliderSize; // Halve the collider height
                 capsule.offset = crouchColliderOffset; // Move the offset down by half the new hight
-
             }
 
             else
@@ -112,17 +132,13 @@ public class CharacterController2D : MonoBehaviour
                     wasCrouching = false;
                     OnCrouchEvent.Invoke(false);
                 }
-
             }
-
-          
 
             if (move > 0 && !facingRight) //if the input is moving the player right and the player is facing left
                 Flip(); //flip the player
 
             else if (move < 0 && facingRight)//if the input is moving the player left and the player is facing right
                 Flip(); //flip the player
-
         }
 
         Vector2 targetVelocity = new Vector2(move * 10f, rB2D.velocity.y); //Move character by finding the target velocity        
@@ -157,5 +173,4 @@ public class CharacterController2D : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundedRadius);
         Gizmos.DrawWireSphere(ceilingCheck.position, ceilingRadius);
     }
-
 }
