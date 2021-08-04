@@ -133,13 +133,13 @@ public class CharacterController2D : MonoBehaviour
                     OnCrouchEvent.Invoke(false);
                 }
             }
-
-            if (move > 0 && !facingRight) //if the input is moving the player right and the player is facing left
-                Flip(); //flip the player
-
-            else if (move < 0 && facingRight)//if the input is moving the player left and the player is facing right
-                Flip(); //flip the player
         }
+
+        if (move > 0 && !facingRight) //if the input is moving the player right and the player is facing left
+            Flip(); //flip the player
+
+        else if (move < 0 && facingRight)//if the input is moving the player left and the player is facing right
+            Flip(); //flip the player
 
         Vector2 targetVelocity = new Vector2(move * 10f, rB2D.velocity.y); //Move character by finding the target velocity        
 

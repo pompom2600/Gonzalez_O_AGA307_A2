@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         jump = Input.GetButton("Jump");
-        Debug.Log(jump);
+        //Debug.Log(jump);
         crouch = Input.GetButton("Crouch");
     }
 
