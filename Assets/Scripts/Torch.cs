@@ -38,8 +38,6 @@ public class Torch : MonoBehaviour
             torchLight.enabled = isTurnedOn;
         }
 
-        
-
         if (isTurnedOn)
         {
             timer -= Time.deltaTime;

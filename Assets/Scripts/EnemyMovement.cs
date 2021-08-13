@@ -69,26 +69,4 @@ public class EnemyMovement : MonoBehaviour
         transform.localScale = theScale;
     }
 
-   /* IEnumerator Move()
-    {
-        while (Vector3.Distance(transform.position, targetA.position) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetA.position, Time.deltaTime * baseSpeed);
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(2);
-        Flip();
-
-        while (Vector3.Distance(transform.position, targetB) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetB, Time.deltaTime * baseSpeed);
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(2);
-        Flip();
-
-        StartCoroutine(Move());
-    }*/
 }

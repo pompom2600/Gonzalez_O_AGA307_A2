@@ -84,9 +84,8 @@ public class CharacterController2D : MonoBehaviour
         bool wasGrounded = grounded;
 
         if (isHiding)
-        {
             sR.color = hideColor;
-        }
+
         else
         {
             sR.color = defaultColor;
@@ -207,9 +206,17 @@ public class CharacterController2D : MonoBehaviour
     {
         if (other.CompareTag("Evade") && isCrouching)
             isHiding = true;
-        if (other.CompareTag("EnemyView"))
-            isInView = true;
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("Player") && other.CompareTag("EnemyView") && isHiding == false)
+        { 
+            //isInView = true;
+            PlayerMovement player = GetComponent<PlayerMovement>();
+            player.StartCoroutine("Spotted");
+        }
+    }
+
 
 
     private void OnDrawGizmos()
