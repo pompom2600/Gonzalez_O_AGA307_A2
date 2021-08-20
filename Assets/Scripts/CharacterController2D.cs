@@ -39,6 +39,9 @@ public class CharacterController2D : MonoBehaviour
     private bool facingRight = true;
 
 
+    //Animation
+    [SerializeField] private Animator animator;
+
     private List<Vector2> collisionNormals = new List<Vector2>();
 
     [Header("Events")]
@@ -67,6 +70,9 @@ public class CharacterController2D : MonoBehaviour
 
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
+
+        animator = GetComponent<Animator>(); //the animation
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -109,6 +115,9 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+        animator.SetBool("IsGrounded", grounded);    
+        animator.SetBool("IsCrouching", isCrouching);    
+        animator.SetFloat("MoveSpeed", rB2D.velocity.magnitude);
     }
 
     public void Move(float move, bool crouch, bool jump)
@@ -134,37 +143,33 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-        else
+        if (crouch)
         {
-            if (crouch)
+            if (!wasCrouching)
             {
-                if (!wasCrouching)
-                {
-                    wasCrouching = true;
-                    OnCrouchEvent.Invoke(true);
-                }
-
-                move *= crouchSpeed; //Reduce the maxSpeed by the crouchSpeed multiplier
-
-                capsule.size = crouchColliderSize; // Halve the collider height
-                capsule.offset = crouchColliderOffset; // Move the offset down by half the new hight
+                wasCrouching = true;
+                OnCrouchEvent.Invoke(true);
             }
 
-            else
-            {
-                capsule.offset = Vector2.zero;  // Move offset up by half height
-                capsule.size = originalColliderSize; // Double collider hight
+            move *= crouchSpeed; //Reduce the maxSpeed by the crouchSpeed multiplier
 
-                if (wasCrouching)
-                {
-                    wasCrouching = false;
-                    OnCrouchEvent.Invoke(false);
-                }
-            }
-
-            isCrouching = crouch;
+            capsule.size = crouchColliderSize; // Halve the collider height
+            capsule.offset = crouchColliderOffset; // Move the offset down by half the new hight
         }
 
+        else
+        {
+            capsule.offset = Vector2.zero;  // Move offset up by half height
+            capsule.size = originalColliderSize; // Double collider hight
+
+            if (wasCrouching)
+            {
+                wasCrouching = false;
+                OnCrouchEvent.Invoke(false);
+            }
+        }
+
+        isCrouching = crouch;
 
         if (move > 0 && !facingRight) //if the input is moving the player right and the player is facing left
             Flip(); //flip the player

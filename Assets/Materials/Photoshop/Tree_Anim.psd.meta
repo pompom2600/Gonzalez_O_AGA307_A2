@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 8d35694a70aafca4d8ed9b21ce7fafca
+guid: d4457125f88c4b8439c2bb96850c8544
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1778978672433344179
-    second: Heart Turnaround_0
+      213: 3229257398209563342
+    second: Tree_Anim_0
   - first:
-      213: -2880807762837163671
-    second: Heart Turnaround_1
-  - first:
-      213: 5040046533094691813
-    second: Heart Turnaround_2
-  - first:
-      213: 5167251122414764009
-    second: Heart Turnaround_3
+      213: -5146599966176440324
+    second: Tree_Anim_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,11 +52,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -103,85 +97,62 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Heart Turnaround_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d415d96a25ccf47e0800000000000000
-      internalID: -1778978672433344179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heart Turnaround_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96137e55a905508d0800000000000000
-      internalID: -2880807762837163671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heart Turnaround_2
+      name: Tree_Anim_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 8
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
-      tessellationDetail: 0
+      physicsShape:
+      - - {x: -4, y: 8}
+        - {x: -4, y: -3.2721848}
+        - {x: -3, y: -8}
+        - {x: 2, y: -8}
+        - {x: 3, y: -4}
+        - {x: 3, y: -3}
+        - {x: 3, y: 1}
+        - {x: 3, y: 6}
+        - {x: 2, y: 8}
+      tessellationDetail: 0.76
       bones: []
-      spriteID: 5e35c885e97d1f540800000000000000
-      internalID: 5040046533094691813
+      spriteID: eca459c8e70a0dc20800000000000000
+      internalID: 3229257398209563342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart Turnaround_3
+      name: Tree_Anim_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 8
         y: 0
-        width: 16
+        width: 8
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 2, y: 8}
+        - {x: -2, y: 8}
+        - {x: -4, y: 2}
+        - {x: -3, y: -8}
+        - {x: 2, y: -8}
+        - {x: 4, y: -4}
+        - {x: 4, y: -3}
+        - {x: 4, y: 1}
+        - {x: 4, y: 7}
+        - {x: 2, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 9ef35c0c483c5b740800000000000000
-      internalID: 5167251122414764009
+      spriteID: cff040f399a9398b0800000000000000
+      internalID: -5146599966176440324
       vertices: []
       indices: 
       edges: []
@@ -198,7 +169,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
