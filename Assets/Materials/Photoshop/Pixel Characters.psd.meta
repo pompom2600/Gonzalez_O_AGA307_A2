@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -590301295280274501
     second: Pixel Characters_5
+  - first:
+      213: -8337465923376656025
+    second: Pixel Characters_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,6 +233,27 @@ TextureImporter:
       bones: []
       spriteID: bb3cd587914dec7f0800000000000000
       internalID: -590301295280274501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Characters_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.94}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761d53e9aee5b4c80800000000000000
+      internalID: -8337465923376656025
       vertices: []
       indices: 
       edges: []
