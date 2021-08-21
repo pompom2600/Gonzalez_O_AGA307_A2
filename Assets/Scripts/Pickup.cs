@@ -17,6 +17,8 @@ public class Pickup : MonoBehaviour
             case PickupTypes.Battery:
                 Torch playerTorch = other.gameObject.GetComponentInChildren<Torch>();
                 playerTorch.RechargeBattery();
+
+
                 break;
             case PickupTypes.Heart:
                 PlayerMovement player = other.gameObject.GetComponentInChildren<PlayerMovement>();

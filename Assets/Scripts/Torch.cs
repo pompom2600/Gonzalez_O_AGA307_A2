@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Torch : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class Torch : MonoBehaviour
     private float originalIntensity;
     private float originalRadius;
     private Camera mainCam;
-
+    public Slider torchSlider;
+    private float originalSlider;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class Torch : MonoBehaviour
         originalIntensity = torchLight.intensity;
         originalRadius = torchLight.pointLightOuterRadius;
         timer = batteryLife;
+        originalSlider = torchSlider.value;
         mainCam = Camera.main;
     }
 
@@ -32,6 +35,7 @@ public class Torch : MonoBehaviour
         mouseWorldPos.z = 0;
         transform.up = (mouseWorldPos - transform.position).normalized;
 
+
         if (Input.GetButtonDown("Fire1"))
         {
             isTurnedOn = !isTurnedOn;
@@ -41,10 +45,10 @@ public class Torch : MonoBehaviour
         if (isTurnedOn)
         {
             timer -= Time.deltaTime;
-
             if (timer < fullPowerTime && timer >= 0)
             {
                 float t = timer / fullPowerTime;
+                torchSlider.value = t;
                 torchLight.pointLightOuterRadius = Mathf.Lerp(0, originalRadius, t);
                 torchLight.intensity = Mathf.Lerp(0, originalIntensity, t);   
             }
@@ -55,5 +59,6 @@ public class Torch : MonoBehaviour
         torchLight.intensity = originalIntensity;
         torchLight.pointLightOuterRadius = originalRadius;
         timer = batteryLife;
+        torchSlider.value = originalSlider;
     }
 }

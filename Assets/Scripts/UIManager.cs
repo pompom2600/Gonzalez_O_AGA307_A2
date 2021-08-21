@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
 
 
     public TMP_Text lvlText;
-    public Slider torchSlider;
     public Image[] hearts;
 
 
@@ -32,12 +31,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-
-
-
     public void UpdateScore(int _score)
-    {
+    { 
         lvlText.text = "Score: " + _score;
     }
 

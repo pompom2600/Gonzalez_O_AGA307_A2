@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: f76e43ee37c4338449eeca5daea3df34
+guid: 56d8f5de0d471ab4fa0d68a555b47162
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6226235450434462516
-    second: Pixel Characters_0
+      213: -8262962332104172251
+    second: Tiles_Walls_0
   - first:
-      213: 7411579057566089212
-    second: Pixel Characters_1
+      213: -1578018392862761420
+    second: Tiles_Walls_1
   - first:
-      213: -9023000878580331593
-    second: Pixel Characters_2
+      213: 5256296580117078720
+    second: Tiles_Walls_2
   - first:
-      213: -6332354967905489681
-    second: Pixel Characters_3
-  - first:
-      213: -5412947596363037410
-    second: Pixel Characters_4
-  - first:
-      213: -590301295280274501
-    second: Pixel Characters_5
-  - first:
-      213: -8337465923376656025
-    second: Pixel Characters_6
-  - first:
-      213: 3999382411254461733
-    second: Pixel Characters_7
+      213: -4059104388739549430
+    second: Tiles_Walls_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +77,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -101,7 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -115,169 +103,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pixel Characters_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43327177728086650800000000000000
-      internalID: 6226235450434462516
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Characters_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cff73f672e73bd660800000000000000
-      internalID: 7411579057566089212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Characters_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7bb8e20c18cd7c280800000000000000
-      internalID: -9023000878580331593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Characters_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fec205af4b4fe18a0800000000000000
-      internalID: -6332354967905489681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pixel Characters_4
+      name: Tiles_Walls_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e150af217d851e4b0800000000000000
-      internalID: -5412947596363037410
+      spriteID: 52d5f7ab98f045d80800000000000000
+      internalID: -8262962332104172251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixel Characters_5
+      name: Tiles_Walls_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.94}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb3cd587914dec7f0800000000000000
-      internalID: -590301295280274501
+      spriteID: 43ed164e1a0c91ae0800000000000000
+      internalID: -1578018392862761420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixel Characters_6
+      name: Tiles_Walls_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.5, y: 0.94}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 761d53e9aee5b4c80800000000000000
-      internalID: -8337465923376656025
+      spriteID: 0c2aafbf3ed12f840800000000000000
+      internalID: 5256296580117078720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixel Characters_7
+      name: Tiles_Walls_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.53}
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52574c70d19a08730800000000000000
-      internalID: 3999382411254461733
+      spriteID: a0733f2801a2ba7c0800000000000000
+      internalID: -4059104388739549430
       vertices: []
       indices: 
       edges: []
