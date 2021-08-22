@@ -115,11 +115,13 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+        // Animations --------------------------------
         animator.SetBool("IsGrounded", grounded);    
         animator.SetBool("IsCrouching", isCrouching);    
         animator.SetFloat("MoveSpeed", rB2D.velocity.magnitude);
     }
 
+    // Moving ----------------------------------------
     public void Move(float move, bool crouch, bool jump)
     {
         if (!crouch && wasCrouching) //If crouching & was crouching, check to see if the character can stand up
@@ -231,7 +233,7 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-
+    // Visuals on the ground and cieling checks--------------------------------
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;

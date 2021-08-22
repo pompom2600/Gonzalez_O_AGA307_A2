@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // Pause things
         {
             if (GameIsPaused)
             {
@@ -41,33 +41,33 @@ public class UIManager : MonoBehaviour
         DeathCredit();
     }
 
-    public void Resume()
+    public void Resume() //Resume button
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    void Pause()
+    void Pause() //Pause the game
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
-    public void LoadMenu()
+    public void LoadMenu() //Load Menu
     {
         Time.timeScale = 1f;
         Debug.Log("Loading menu");
     }
     
-    public void QuitGame()
+    public void QuitGame() //Quit Game
     {
         Debug.Log("Quit");
         Application.Quit();
     }
 
-    public void DeathCredit()
+    public void DeathCredit() //Death Credit update
     {
         if (player.health <= 0)
         {
@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    public void UpdateHealth()
+    public void UpdateHealth() //Heart Image update
     {
         for (int i = 0; i < hearts.Length; i++)
         {

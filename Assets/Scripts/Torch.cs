@@ -31,7 +31,7 @@ public class Torch : MonoBehaviour
     
     void Update()
     {
-        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition); //Light follows the mouse position
         mouseWorldPos.z = 0;
         transform.up = (mouseWorldPos - transform.position).normalized;
 
@@ -45,7 +45,7 @@ public class Torch : MonoBehaviour
         if (isTurnedOn)
         {
             timer -= Time.deltaTime;
-            if (timer < fullPowerTime && timer >= 0)
+            if (timer < fullPowerTime && timer >= 0) 
             {
                 float t = timer / fullPowerTime;
                 torchSlider.value = t;
@@ -54,7 +54,8 @@ public class Torch : MonoBehaviour
             }
         }
     }
-    public void RechargeBattery()
+    // Recharge the Battery--------------------------------
+    public void RechargeBattery() 
     {
         torchLight.intensity = originalIntensity;
         torchLight.pointLightOuterRadius = originalRadius;

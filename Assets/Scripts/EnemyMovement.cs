@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private EnemyState currentState = EnemyState.Patrol;
 
-    public Transform targetA;
+    public Transform targetA; //Points A & B
     public Transform targetB;
 
     private Transform currentTarget;
@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (currentState)
+        switch (currentState) //Enemy State
         {
             case EnemyState.Patrol:
                 float targetDir = currentTarget.position.x - transform.position.x;
@@ -60,7 +60,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void Flip()
+    private void Flip() //Fliping the image
     {
         facingRight = !facingRight;
 

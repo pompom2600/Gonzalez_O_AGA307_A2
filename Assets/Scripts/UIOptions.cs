@@ -8,6 +8,9 @@ public class UIOptions : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
+
+    //Found this a bit hard to work out so i just // till another time
+
     //public Dropdown resolutionDropdown;
     //Resolution[] resolutions;
 

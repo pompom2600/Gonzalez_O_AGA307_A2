@@ -12,7 +12,7 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        switch (pickup)
+        switch (pickup) //Two types of pickups so far
         {
             case PickupTypes.Battery:
                 Torch playerTorch = other.gameObject.GetComponentInChildren<Torch>();

@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void HealthRegn()
+    public void HealthRegn() //Regenerate the health
     {
         health = Mathf.Clamp(health + 1, 0, 4);
         UIManager.instance.UpdateHealth();
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator Spotted()
+    public IEnumerator Spotted() //When Character is spotted
     {
         health = Mathf.Clamp(health - 1, 0, 4);
         UIManager.instance.UpdateHealth();
