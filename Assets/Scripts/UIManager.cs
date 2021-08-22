@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    public Animator transition;
+    public float transitionTime = 2f;
+
     private void Start()
     {
         if (instance == null)
@@ -58,7 +61,7 @@ public class UIManager : MonoBehaviour
     public void LoadMenu() //Load Menu
     {
         Time.timeScale = 1f;
-        Debug.Log("Loading menu");
+        SceneManager.LoadScene("TitleScreen");
     }
     
     public void QuitGame() //Quit Game
@@ -85,6 +88,12 @@ public class UIManager : MonoBehaviour
             else
                 hearts[i].enabled = true;
         }
+    }
+
+    IEnumerator Transition()
+    {
+        transition.SetTrigger("Start");
+        return null; //new WaitForSeconds(transitionTime);
     }
 
 }

@@ -12,10 +12,15 @@ public class PlayerMovement : MonoBehaviour
     private bool crouch;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
+    public Vector3 secondRoom;
     private Vector3 startingPos;
+
+
 
     private SpriteRenderer spriteRenderer;
     private Color originalCol;
+
+
 
     private void Start()
     {
@@ -54,6 +59,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other) //To the Second Level
+    {
+        if (other.CompareTag("Door") && Input.GetKeyDown(KeyCode.W))
+        {
+            transform.position = secondRoom;
+            //UIManager.instance.StartCoroutine("Transition");
+            health = 4;
+            startingPos = transform.position;
+
+        }
+    }
+
     public IEnumerator Spotted() //When Character is spotted
     {
         health = Mathf.Clamp(health - 1, 0, 4);
@@ -61,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 0;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         spriteRenderer.color = Color.red;
+       // UIManager.instance.crossFade;
         yield return StartCoroutine(WaitForRealSeconds(2f));
 
         Time.timeScale = 1;
