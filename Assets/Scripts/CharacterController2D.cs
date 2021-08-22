@@ -212,13 +212,9 @@ public class CharacterController2D : MonoBehaviour
         if (other.CompareTag("Evade") && isCrouching)
             isHiding = true;
 
-        if (other.CompareTag("Cabinet"))
+        if (other.CompareTag("Door") && Input.GetKeyDown(KeyCode.W))
         {
-
-            if (Input.GetKey(KeyCode.E))
-            {
-                Debug.Log("Information");
-            }
+            Debug.Log("Information");
 
         }
 

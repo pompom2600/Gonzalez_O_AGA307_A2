@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Evade
   - EnemyView
-  - Cabinet
+  - Door
   layers:
   - Default
   - TransparentFX
