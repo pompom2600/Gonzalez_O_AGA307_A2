@@ -211,6 +211,18 @@ public class CharacterController2D : MonoBehaviour
     {
         if (other.CompareTag("Evade") && isCrouching)
             isHiding = true;
+
+        if (other.CompareTag("Cabinet"))
+        {
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                Debug.Log("Information");
+            }
+
+        }
+
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

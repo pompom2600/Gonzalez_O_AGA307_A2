@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class UITitle : MonoBehaviour
 {
-    public void LoadScene(string _sceneName)
-    {
-        SceneManager.LoadScene(_sceneName);
-    }
 
-    //public void StartGame()
-    //{
-    //    SceneManager.LoadScene("MainScene");
-    //    _GM.ChangeGameState(GameState.InGame);
-    //}
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit");
     }
 }
