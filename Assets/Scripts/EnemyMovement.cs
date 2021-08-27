@@ -69,4 +69,10 @@ public class EnemyMovement : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(targetA.position + new Vector3(3.1f, 0, 0), targetA.position + new Vector3(-3.1f, 0, 0));
+        Gizmos.DrawLine(targetB.position + new Vector3(3.1f, 0, 0), targetB.position + new Vector3(-3.1f, 0, 0));
+    }
 }
