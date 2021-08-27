@@ -314,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8152924949298048877}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TargetB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8152924949716162613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8152924950009891022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TargetA
   m_TagString: Untagged
   m_Icon: {fileID: 0}

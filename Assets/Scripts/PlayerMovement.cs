@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private bool crouch;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
-    public Vector3 secondRoom;
+    public Vector2 secondRoom;
     private Vector3 startingPos;
-
+    private Torch torch;
 
 
     private SpriteRenderer spriteRenderer;
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         startingPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalCol = spriteRenderer.color;
+        torch = GetComponentInChildren<Torch>();
     }
 
     private void Update()
@@ -66,8 +67,9 @@ public class PlayerMovement : MonoBehaviour
             transform.position = secondRoom;
             //UIManager.instance.StartCoroutine("Transition");
             health = 4;
+            torch.RechargeBattery();
+            UIManager.instance.lvlText.text = ("Floor 2");
             startingPos = transform.position;
-
         }
     }
 
@@ -81,9 +83,11 @@ public class PlayerMovement : MonoBehaviour
        // UIManager.instance.crossFade;
         yield return StartCoroutine(WaitForRealSeconds(2f));
 
-        Time.timeScale = 1;
         transform.position = startingPos;
+        Time.timeScale = 1;
         spriteRenderer.color = originalCol;
+        controller.hasReset = false;
+        torch.RechargeBattery();
         yield return null;
     }
 

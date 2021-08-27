@@ -8,7 +8,7 @@ public class CharacterController2D : MonoBehaviour
     //Player Jump, Left, Right
     public float jumpForce = 3f; //Jumpforce
     public float maxSpeed = 5f;
-    public GameObject player;
+    public PlayerMovement player;
     private Rigidbody2D rB2D;
 
     //Grounded
@@ -34,6 +34,8 @@ public class CharacterController2D : MonoBehaviour
     private SpriteRenderer sR;
     [SerializeField] private Color hideColor;
     private Color defaultColor;
+    public bool hasReset = false;
+
 
     //Flip
     private bool facingRight = true;
@@ -95,9 +97,11 @@ public class CharacterController2D : MonoBehaviour
         else
         {
             sR.color = defaultColor;
-            if (isInView)
+            if (isInView && !hasReset)
             {
+                hasReset = true;
                 sR.color = Color.red;
+                player.StartCoroutine("Spotted");
             }
         }
 
@@ -213,16 +217,14 @@ public class CharacterController2D : MonoBehaviour
     {
         if (other.CompareTag("Evade") && isCrouching)
             isHiding = true;
+
+ 
+        if (gameObject.layer == LayerMask.NameToLayer("Player") && other.CompareTag("EnemyView") && isHiding == false && !hasReset)
+             isInView = true;
+
+        
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (gameObject.layer == LayerMask.NameToLayer("Player") && other.CompareTag("EnemyView") && isHiding == false)
-        { 
-            //isInView = true;
-            PlayerMovement player = GetComponent<PlayerMovement>();
-            player.StartCoroutine("Spotted");
-        }
-    }
+    
 
 
     // Visuals on the ground and cieling checks--------------------------------

@@ -16,6 +16,10 @@ public class Torch : MonoBehaviour
     private Camera mainCam;
     public Slider torchSlider;
     private float originalSlider;
+    private Image sliderImg;
+
+    [SerializeField] private Color fullPowerColour;
+    [SerializeField] private Color lowBatteryColour;
 
     void Start()
     {
@@ -26,6 +30,7 @@ public class Torch : MonoBehaviour
         timer = batteryLife;
         originalSlider = torchSlider.value;
         mainCam = Camera.main;
+        sliderImg = torchSlider.fillRect.GetComponent<Image>();
     }
 
     
@@ -45,12 +50,16 @@ public class Torch : MonoBehaviour
         if (isTurnedOn)
         {
             timer -= Time.deltaTime;
-            if (timer < fullPowerTime && timer >= 0) 
+            if (timer >= 0) 
             {
-                float t = timer / fullPowerTime;
-                torchSlider.value = t;
+                float displayT = timer / batteryLife;
+                float t = Mathf.Min( timer / fullPowerTime, 1);
+                torchSlider.value = displayT;
                 torchLight.pointLightOuterRadius = Mathf.Lerp(0, originalRadius, t);
-                torchLight.intensity = Mathf.Lerp(0, originalIntensity, t);   
+                torchLight.intensity = Mathf.Lerp(0, originalIntensity, t);
+
+                sliderImg.color = (timer > fullPowerTime) ? fullPowerColour : lowBatteryColour;
+
             }
         }
     }
